@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 20:33:36 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/08 20:35:12 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*put_line(char *line_read)
 	write(1, &nl, 1);
 	line = (char *)malloc((i + i) * sizeof(char));
 	if (!line)
-		return ;
+		return (NULL);
 	ft_strlcpy(line, line_read, i);
 	line_read += i;
 	return (line);
