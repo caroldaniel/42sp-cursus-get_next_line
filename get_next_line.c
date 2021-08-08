@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 20:26:51 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/08 20:33:36 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 int		read_file(int fd, char *buffer, char *line_read);
-void	put_line(char *line_read, char *line);
+char	*put_line(char *line_read);
 
 char *get_next_line(int fd)
 {
@@ -32,7 +32,7 @@ char *get_next_line(int fd)
 			return (NULL);
 	}
 	free(buffer);		
-	put_line(line_read, line);
+	line = put_line(line_read);
 	return (line);
 }
 
@@ -54,11 +54,12 @@ int	read_file(int fd, char *buffer, char *line_read)
 	return (1);
 }
 
-void	put_line(char *line_read, char *line)
+char	*put_line(char *line_read)
 {
 	size_t	i;
 	char	nl;
-
+	char	*line;
+	
 	i = 0;
 	nl = '\0';
 	while (line_read[i] != '\n')
@@ -69,7 +70,8 @@ void	put_line(char *line_read, char *line)
 	write(1, &nl, 1);
 	line = (char *)malloc((i + i) * sizeof(char));
 	if (!line)
-		return (NULL);
+		return ;
 	ft_strlcpy(line, line_read, i);
 	line_read += i;
+	return (line);
 }
