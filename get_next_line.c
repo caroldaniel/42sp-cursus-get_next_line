@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 19:48:57 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/08 19:57:37 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,18 @@ static int	read_file(int fd, char *buffer, char *line_read)
 	return (1);
 }
 
-void	put_line(char *line_read)
+static void	put_line(char *line_read)
 {
 	size_t	i;
+	char	nl;
 
 	i = 0;
+	nl = '\0';
 	while (line_read[i] != '\n')
 	{
 		write(1, &line_read, 1);
 		i++;
 	}
-	write(1, '\n', 1);
+	write(1, &nl, 1);
 	line_read += i;
 }

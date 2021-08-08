@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:28:24 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 19:48:54 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/08 19:57:31 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 # endif
 
 char		*get_next_line(int fd);
-
-// get_next_line subfunctions
-static int	read_file(int fd, char *buffer, char *line_read);
-void		put_line(char *line_read);
 
 // utils
 void		ft_bzero(void *s, size_t n);
