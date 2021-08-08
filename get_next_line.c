@@ -6,11 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 19:57:37 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/08 19:58:52 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+int	read_file(int fd, char *buffer, char *line_read);
+void	put_line(char *line_read);
 
 char *get_next_line(int fd)
 {
@@ -32,7 +34,7 @@ char *get_next_line(int fd)
 	return (line_read);
 }
 
-static int	read_file(int fd, char *buffer, char *line_read)
+int	read_file(int fd, char *buffer, char *line_read)
 {
 	ssize_t n;
 
@@ -51,7 +53,7 @@ static int	read_file(int fd, char *buffer, char *line_read)
 	return (1);
 }
 
-static void	put_line(char *line_read)
+void	put_line(char *line_read)
 {
 	size_t	i;
 	char	nl;
