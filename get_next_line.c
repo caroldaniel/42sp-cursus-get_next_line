@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 20:35:12 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/08 20:43:09 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*put_line(char *line_read)
 	char	*line;
 	
 	i = 0;
-	nl = '\0';
+	nl = '\n';
 	while (line_read[i] != '\n')
 	{
 		write(1, &line_read, 1);
