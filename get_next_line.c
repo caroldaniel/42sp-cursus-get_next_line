@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/09 18:54:47 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 20:31:34 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char	*get_next_line(int fd)
 	if (!ft_strchr(buff_read, '\n'))
 	{
 		n = read_file(fd, buffer, &buff_read, &buff_len);
-		free(buffer);
 		if (n < 1)
 			return (NULL);
 	}
@@ -65,6 +64,7 @@ int	read_file(int fd, char *buffer, char **buff_read, ssize_t *buff_len)
 		temp = *buff_read;
 		*buff_read = ft_strjoin(temp, buffer);
 		free(temp);
+		free(buffer);
 		*buff_len += n;
 	}
 	return (n);
@@ -77,25 +77,12 @@ char	*get_line(char **buff_read, ssize_t *buff_len, char **line)
 	char	*new_buff;
 
 	i = 0;
-	while (*buff_read[i] != '\n' || *buff_read[i] != '\0')
+	while (*buff_read[i] != '\n' && *buff_read[i] != '\0')
 		i++;
 	if (*buff_read[i] == '\n')
 		i++;
-	*line = (char *)malloc(i * sizeof(char));
-	if (!(*line))
-		return (NULL);
-	j = -1;
-	while (++j < i)
-		*line[j] = *buff_read[j];
-	new_buff = (char *)malloc((*buff_len - i) * sizeof(char));
-	if (!new_buff)
-		return (NULL);
-	j = 0;
-	while ((i + j) < *buff_len)
-	{
-		new_buff[j] = *buff_read[i + j];
-		j++;
-	}
+	*line = ft_substr(*buff_read, 0, i);
+	new_buff = ft_strdup(*(buff_read + i + 1));
 	free(*buff_read);
 	*buff_len -= i;
 	return (new_buff);

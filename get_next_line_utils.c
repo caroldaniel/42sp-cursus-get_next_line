@@ -6,21 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:03:19 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/09 09:20:41 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 20:12:57 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -73,12 +63,62 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	len_s1 = (ft_strlen((char *)s1));
-	len_s2 = (ft_strlen((char *)s2));
+	len_s1 = 0;
+	while (s1[len_s1] != '\0')
+		len_s1++;
+	len_s2 = 0;
+	while (s2[len_s2] != '\0')
+		len_s2++;
 	ccat = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
 	if (ccat == NULL)
 		return (NULL);
 	ft_strlcpy(&ccat[0], s1, len_s1 + 1);
 	ft_strlcpy(&ccat[len_s1], s2, len_s2 + 1);
 	return (ccat);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	size_t	size;
+	size_t	i;
+	char	*ptr;
+
+	if (!s1)
+		return (NULL);
+	size = 0;
+	while (s1[size] != '\0')
+		size++;
+	ptr = malloc((size + 1) * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	ptr[size] = '\0';
+	return (ptr);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*sstr;
+	size_t	strlen;
+
+	if (s == NULL)
+		return (NULL);
+	strlen = 0;
+	while (s[strlen] != '\0')
+		strlen++;
+	if (start > strlen)
+		return (ft_strdup(""));
+	if (strlen - start >= len)
+		sstr = (char *)malloc((len + 1) * sizeof(char));
+	else
+		sstr = (char *)malloc((strlen - start + 1) * sizeof(char));
+	if (sstr == NULL)
+		return (NULL);
+	ft_strlcpy(sstr, (s + start), (len + 1));
+	return (sstr);
 }
