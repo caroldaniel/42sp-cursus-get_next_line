@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:28:24 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 19:57:31 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 08:46:32 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 char		*get_next_line(int fd);
 
 // utils
-void		ft_bzero(void *s, size_t n);
 int			ft_strlen(const char *s);
 char		*ft_strchr(const char *s, int c);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);

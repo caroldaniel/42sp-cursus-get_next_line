@@ -6,23 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:03:19 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/08 19:26:28 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 09:20:41 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = '\0';
-		i++;
-	}
-}
 
 int	ft_strlen(const char *s)
 {
@@ -41,6 +29,8 @@ char	*ft_strchr(const char *s, int c)
 
 	ch = (unsigned char)c;
 	i = 0;
+	if (!s)
+		return (NULL);
 	while (s[i] != '\0')
 	{
 		if (s[i] == ch)
