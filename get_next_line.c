@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/09 18:48:19 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 18:53:50 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	read_file(int fd, char *buffer, char **buff_read, ssize_t *buff_len)
 	while (!ft_strchr(*buff_read, '\n'))
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
-		if (n <= 0 || buffer > BUFFER_SIZE)
+		if (n <= 0)
 			return (n);
 		buffer[n] = '\0';
 		temp = *buff_read;
@@ -74,7 +74,6 @@ char	*get_line(char **buff_read, ssize_t *buff_len, char **line)
 {
 	ssize_t	i;
 	ssize_t	j;
-	char	*line;
 	char	*new_buff;
 
 	i = 0;
