@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/09 22:12:02 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 22:16:27 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*get_line(char **buff_read, ssize_t *buff_len, char **line)
 	if (*buff_read[i] == '\n')
 		i++;
 	*line = ft_substr(*buff_read, 0, i);
-	new_buff = ft_strdup(*(&buff_read[i]));
+	new_buff = ft_strdup(&(*buff_read)[i]);
 	*buff_len -= i;
 	free(*buff_read);
 	return (new_buff);
