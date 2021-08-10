@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:50:22 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 19:59:52 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 20:02:00 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-// # include <sys/types.h>
-// # include <sys/stat.h>
-// # include <sys/resource.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
