@@ -6,12 +6,12 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 00:33:20 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 00:38:52 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-int		read_file(int fd, char *buffer, char **buff_read);
+int		read_file(int fd, char *buffer, char *buff_read);
 char	*get_line(char *buff_read, char **line);
 
 char	*get_next_line(int fd)
@@ -29,7 +29,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!ft_strchr(buff_read, '\n'))
 	{
-		n = read_file(fd, buffer, &buff_read);
+		n = read_file(fd, buffer, buff_read);
 		if (n < 0)
 			return (NULL);
 	}
@@ -40,20 +40,19 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	read_file(int fd, char *buffer, char **buff_read)
+int	read_file(int fd, char *buffer, char *buff_read)
 {
 	char	*temp;
 	ssize_t	n;
 
-	n = 1;
-	while (!ft_strchr(*buff_read, '\n'))
+	while (!ft_strchr(buff_read, '\n'))
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
 		if (n <= 0)
 			break ;
 		buffer[n] = '\0';
-		temp = *buff_read;
-		*buff_read = ft_strjoin(temp, buffer);
+		temp = buff_read;
+		buff_read = ft_strjoin(temp, buffer);
 		free(temp);
 	}
 	free(buffer);
@@ -77,5 +76,6 @@ char	*get_line(char *buff_read, char **line)
 	}
 	else
 		*line = ft_strdup(buff_read);
+	free(buff_read);
 	return (new_buff);
 }
