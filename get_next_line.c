@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/09 20:35:28 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 21:54:50 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,7 @@ int	read_file(int fd, char *buffer, char **buff_read, ssize_t *buff_len)
 	ssize_t	n;
 
 	if (!(*buff_read))
-	{
-		*buff_read = (char *)malloc(1 * sizeof(char));
-		if (!(*buff_read))
-			return (-1);
-		*buff_read = "";
-	}
+		*buff_read = ft_strdup("");
 	while (!ft_strchr(*buff_read, '\n'))
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
@@ -63,7 +58,7 @@ int	read_file(int fd, char *buffer, char **buff_read, ssize_t *buff_len)
 		buffer[n] = '\0';
 		temp = *buff_read;
 		*buff_read = ft_strjoin(temp, buffer);
-		free(buffer);
+		free(temp);
 		*buff_len += n;
 	}
 	return (n);
