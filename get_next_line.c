@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 00:31:44 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 00:33:20 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ char	*get_line(char *buff_read, char **line)
 	}
 	else
 		*line = ft_strdup(buff_read);
-	free(buff_read);
 	return (new_buff);
 }
