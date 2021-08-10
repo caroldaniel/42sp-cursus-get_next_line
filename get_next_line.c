@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 01:06:53 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 01:08:56 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*get_line(char *buff_read, char **line)
 	char	*new_buff;
 
 	i = 0;
-	new_buff = "(null)";
+	new_buff = NULL;
 	while ((*(buff_read + i) != '\n') && (*(buff_read + i) != '\0'))
 		i++;
 	if (*(buff_read + i) == '\n')
