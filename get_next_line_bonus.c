@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:50:19 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 19:54:51 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 19:56:33 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*get_line(char **buff_read, char **line);
 
 char	*get_next_line(int fd)
 {
-	static char		*buff_read[OPEN_MAX] = NULL;
+	static char		*buff_read[OPEN_MAX];
 	char			*buffer;
 	char			*line;
 	ssize_t			n;
