@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 02:12:25 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 02:14:18 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!buff_read)
 		buff_read = ft_strdup("");
-	n = read_file(fd, buffer, buff_read, line);
+	n = read_file(fd, buffer, buff_read, &line);
 	if (n < 0 || (n == 0 && !line))
 		return (NULL);
 	return (line);
