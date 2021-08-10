@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 00:48:03 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 00:49:37 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*get_next_line(int fd)
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
+	if (!buff_read)
+		buff_read = ft_strdup("");
 	if (!ft_strchr(buff_read, '\n'))
 	{
 		n = read_file(fd, buffer, buff_read);
@@ -45,8 +47,6 @@ int	read_file(int fd, char *buffer, char *buff_read)
 	char	*temp;
 	ssize_t	n;
 
-	if (!buff_read)
-		buff_read = ft_strdup("");
 	while (!ft_strchr(buff_read, '\n'))
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
