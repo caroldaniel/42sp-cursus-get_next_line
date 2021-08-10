@@ -57,7 +57,7 @@ Usage
 
 ### Instructions
 
-When compiling `get_next_line` or its bonus version, be sure to include the following flags
+When compiling `get_next_line` or its **bonus** version, be sure to include the following flags
 
 ```sh
 $> gcc -Wall -Wextra -Werror -D BUFFER_SIZE=xxx <files>.c.
