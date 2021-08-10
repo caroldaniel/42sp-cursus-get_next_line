@@ -6,18 +6,17 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/09 23:02:31 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 00:23:36 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-int		read_file(int fd, char *buffer, char **buff_read, ssize_t *buff_len);
-char	*get_line(char **buff_read, ssize_t *buff_len, char **line);
+int		read_file(int fd, char *buffer, char **buff_read);
+char	*get_line(char *buff_read, char **line);
 
 char	*get_next_line(int fd)
 {
-	static char		*buff_read = NULL;
-	static ssize_t	buff_len = 0;
+	static char		*buff_read = "";
 	char			*buffer;
 	char			*line;
 	ssize_t			n;
@@ -27,26 +26,20 @@ char	*get_next_line(int fd)
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	if (!buff_read)
-		buff_read = ft_strdup("");
 	if (!ft_strchr(buff_read, '\n'))
 	{
-		n = read_file(fd, buffer, &buff_read, &buff_len);
+		n = read_file(fd, buffer, &buff_read);
 		if (n < 0)
 			return (NULL);
 	}
-	if (!buff_len && n == 0)
-	{
-		free(buff_read);
+	if (ft_strchr(buff_read, '\n') || !n)
+		buff_read = get_line(&buff_read, &line);
+	if (!n)
 		return (NULL);
-	}
-	line = NULL;
-	if (ft_strchr(buff_read, '\n') || n == 0)
-		buff_read = get_line(&buff_read, &buff_len, &line);
 	return (line);
 }
 
-int	read_file(int fd, char *buffer, char **buff_read, ssize_t *buff_len)
+int	read_file(int fd, char *buffer, char **buff_read)
 {
 	char	*temp;
 	ssize_t	n;
@@ -55,33 +48,33 @@ int	read_file(int fd, char *buffer, char **buff_read, ssize_t *buff_len)
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
 		if (n <= 0)
-		{
-			free(buffer);
-			return (n);
-		}
+			break ;
 		buffer[n] = '\0';
 		temp = *buff_read;
 		*buff_read = ft_strjoin(temp, buffer);
 		free(temp);
-		*buff_len += n;
 	}
 	free(buffer);
 	return (n);
 }
 
-char	*get_line(char **buff_read, ssize_t *buff_len, char **line)
+char	*get_line(char *buff_read, char **line)
 {
 	ssize_t	i;
 	char	*new_buff;
 
 	i = 0;
-	while (*buff_read[i] != '\n' && *buff_read[i] != '\0')
+	new_buff = "(null)";
+	while ((*(buff_read + i) != '\n') && (*(buff_read + i) != '\0'))
 		i++;
-	if (*buff_read[i] == '\n')
+	if (*(buff_read + i) == '\n')
+	{
 		i++;
-	*line = ft_substr(*buff_read, 0, i);
-	new_buff = ft_strdup(&(*buff_read)[i]);
-	*buff_len -= i;
-	free(*buff_read);
+		*line = ft_substr(buff_read, 0, i);
+		new_buff = ft_strdup(buff_read + i);
+	}
+	else
+		*line = ft_strdup(buff_read);
+	free(buff_read);
 	return (new_buff);
 }
