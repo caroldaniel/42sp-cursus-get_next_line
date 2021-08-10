@@ -39,14 +39,14 @@ The project
 
 ### Mandatory implementation
 
-- [`header file`](get_next_line.h)	- checks for an alphanumeric character
-- [`get_next_line`](get_next_line.c)	- the main function
+- [`header file`](get_next_line.h)
+- [`get_next_line`](get_next_line.c)	- the main function and its additionals
 - [`get_next_line_utils`](get_next_line_utils.c)	- additional functions from [`libft`](https://github.com/caroldaniel/42sp-cursus-libft)
 
 ### Mandatory implementation
 
-- [`header file`](get_next_line_bonus.h)	- checks for an alphanumeric character
-- [`get_next_line_bonus`](get_next_line_bonus.c)	- the main function
+- [`header file`](get_next_line_bonus.h)
+- [`get_next_line_bonus`](get_next_line_bonus.c)	- the main function and its additionals
 - [`get_next_line_utils_bonus`](get_next_line_utils_bonus.c)	- additional functions from [`libft`](https://github.com/caroldaniel/42sp-cursus-libft)
 
 
