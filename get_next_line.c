@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 09:17:46 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 09:24:05 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	n = read_file(fd, buffer, buff_read, &line);
+	free(buffer);
 	if (n < 0 || (n == 0 && !line))
 		return (NULL);
 	return (line);
@@ -44,8 +45,8 @@ ssize_t	read_file(int fd, char *buffer, char *buff_read, char **line)
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
 		if (n < 0)
-		{;
-			free(buffer);
+		{
+			free(buff_read);
 			return (n);
 		}
 		buffer[n] = '\0';
@@ -53,7 +54,6 @@ ssize_t	read_file(int fd, char *buffer, char *buff_read, char **line)
 		free(buff_read);
 		buff_read = temp;
 	}
-	free(buffer);
 	buff_read = get_line(buff_read, line);
 	if (**line == '\0')
 	{
@@ -69,16 +69,17 @@ char	*get_line(char *buff_read, char **line)
 	char	*new_buff;
 
 	i = 0;
-	new_buff = NULL;
+	new_buff = buff_read;
 	while ((*(buff_read + i) != '\n') && (*(buff_read + i) != '\0'))
 		i++;
 	if (*(buff_read + i) == '\n')
 	{
 		i++;
 		*line = ft_substr(buff_read, 0, i);
-		new_buff = ft_strdup(buff_read + i);
+		buff_read = ft_strdup(&(buff_read[i]));
 	}
 	else
 		*line = ft_strdup(buff_read);
+	free(buff_read);
 	return (new_buff);
 }
