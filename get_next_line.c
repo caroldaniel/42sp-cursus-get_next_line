@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 00:25:57 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 00:28:42 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*get_next_line(int fd)
 int	read_file(int fd, char *buffer, char **buff_read)
 {
 	char	*temp;
+	ssize_t	n;
 
 	while (!ft_strchr(*buff_read, '\n'))
 	{
