@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 14:15:59 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 14:49:03 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line)
 		n = read(fd, *buffer, BUFFER_SIZE);
 		if (n < 0)
 		{
-			free(*buff_read);
-			*buff_read = NULL;
+			clean_ptr(buff_read);
 			free(*buffer);
 			return (n);
 		}
@@ -55,14 +54,10 @@ ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line)
 		*buff_read = ft_strjoin(temp, *buffer);
 		free(temp);
 	}
-	free(*buffer);
-	*buffer = NULL;
+	clean_ptr(buff_read);
 	*buff_read = get_line(buff_read, line);
 	if (**line == '\0')
-	{
-		free(*line);
-		*line = NULL;		
-	}
+		clean_ptr(line);
 	return (n);
 }
 
@@ -83,7 +78,12 @@ char	*get_line(char **buff_read, char **line)
 	}
 	else
 		*line = ft_strdup(*buff_read);
-	free(*buff_read);
-	*buff_read = NULL;
+	clean_ptr(buff_read);
 	return (new_buff);
+}
+
+void	clean_ptr(void **ptr)
+{
+	free(*ptr);
+	*ptr = NULL;
 }
