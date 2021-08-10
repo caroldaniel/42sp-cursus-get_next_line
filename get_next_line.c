@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 01:08:56 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 01:14:14 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ char	*get_next_line(int fd)
 	if (!buff_read)
 		buff_read = ft_strdup("");
 	n = read_file(fd, buffer, buff_read, &line);
-	if (n < 0)		
+	if (n < 0)
+	{
+		free(buffer);
 		return (NULL);
+	}
 	if (!n)
 		return (NULL);
 	return (line);
@@ -45,7 +48,9 @@ int	read_file(int fd, char *buffer, char *buff_read, char **line)
 	while (!ft_strchr(buff_read, '\n'))
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
-		if (n <= 0)
+		if (n < 0)
+			return (n);
+		if (n == 0)
 			break ;
 		buffer[n] = '\0';
 		temp = buff_read;
