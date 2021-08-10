@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:50:19 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 19:50:04 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 19:54:51 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char	*get_line(char **buff_read, char **line);
 *	The new updated buffer with whatever is left from the original, minus the
 *	line extracted.
 */
+
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {

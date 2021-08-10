@@ -6,11 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:50:25 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 18:52:15 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 19:54:06 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /* 
 *	LIBFT FUNCTIONS
