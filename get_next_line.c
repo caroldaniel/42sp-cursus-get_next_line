@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 00:23:36 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 00:25:57 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	if (ft_strchr(buff_read, '\n') || !n)
-		buff_read = get_line(&buff_read, &line);
+		buff_read = get_line(buff_read, &line);
 	if (!n)
 		return (NULL);
 	return (line);
@@ -42,7 +42,6 @@ char	*get_next_line(int fd)
 int	read_file(int fd, char *buffer, char **buff_read)
 {
 	char	*temp;
-	ssize_t	n;
 
 	while (!ft_strchr(*buff_read, '\n'))
 	{
@@ -60,7 +59,7 @@ int	read_file(int fd, char *buffer, char **buff_read)
 
 char	*get_line(char *buff_read, char **line)
 {
-	ssize_t	i;
+	size_t	i;
 	char	*new_buff;
 
 	i = 0;
