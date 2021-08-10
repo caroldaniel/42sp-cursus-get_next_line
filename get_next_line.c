@@ -6,14 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 15:00:18 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 17:41:18 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line);
 char	*get_line(char **buff_read, char **line);
-void	clean_ptr(char **ptr);
 
 char	*get_next_line(int fd)
 {
@@ -24,13 +23,18 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!buff_read)
-		buff_read = ft_strdup("");
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
+	if (read(fd, buffer, 0) < 0)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	if (!buff_read)
+		buff_read = ft_strdup("");
 	n = read_file(fd, &buffer, &buff_read, &line);
-	if (n < 0 || (n == 0 && !line))
+	if (n == 0 && !line)
 		return (NULL);
 	return (line);
 }
@@ -44,21 +48,19 @@ ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line)
 	while (!ft_strchr(*buff_read, '\n') && n)
 	{
 		n = read(fd, *buffer, BUFFER_SIZE);
-		if (n < 0)
-		{
-			clean_ptr(buff_read);
-			free(*buffer);
-			return (n);
-		}
 		(*buffer)[n] = '\0';
 		temp = *buff_read;
 		*buff_read = ft_strjoin(temp, *buffer);
 		free(temp);
 	}
-	clean_ptr(buffer);
+	free(*buffer);
+	*buffer = NULL;
 	*buff_read = get_line(buff_read, line);
 	if (**line == '\0')
-		clean_ptr(line);
+	{
+		free(*line);
+		*line = NULL;	
+	}
 	return (n);
 }
 
@@ -79,12 +81,7 @@ char	*get_line(char **buff_read, char **line)
 	}
 	else
 		*line = ft_strdup(*buff_read);
-	clean_ptr(buff_read);
+	free(*buff_read);
+	*buff_read = NULL;
 	return (new_buff);
-}
-
-void	clean_ptr(char **ptr)
-{
-	free(*ptr);
-	*ptr = NULL;
 }
