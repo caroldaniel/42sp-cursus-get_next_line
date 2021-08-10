@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 17:41:18 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 17:47:15 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line)
 	if (**line == '\0')
 	{
 		free(*line);
-		*line = NULL;	
+		*line = NULL;
 	}
 	return (n);
 }
