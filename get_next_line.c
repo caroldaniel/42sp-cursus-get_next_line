@@ -6,13 +6,14 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 14:49:03 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 14:50:27 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line);
 char	*get_line(char **buff_read, char **line);
+void	clean_ptr(void **ptr);
 
 char	*get_next_line(int fd)
 {
