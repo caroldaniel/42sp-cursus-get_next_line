@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 01:03:48 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 01:06:53 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	read_file(int fd, char *buffer, char *buff_read, char **line)
 		buff_read = ft_strjoin(temp, buffer);
 		free(temp);
 	}
-	buff_read = get_line(buff_read, &line);
+	buff_read = get_line(buff_read, line);
 	free(buffer);
 	return (n);
 }
