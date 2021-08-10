@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 02:14:18 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 02:16:24 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ ssize_t	read_file(int fd, char *buffer, char *buff_read, char **line)
 		n = read(fd, buffer, BUFFER_SIZE);
 		if (n < 0)
 		{
-			free(buff_read);
 			free(buffer);
 			return (0);
 		}
