@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 18:26:34 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 20:05:57 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*get_line(char **buff_read, char **line);
 *	-------------
 *	DESCRIPTION
 *	This function takes an opened file descriptor and returns its next line.
+*	This function has undefined behavior when reading from a binary file.
 *	PARAMETERS
 *	#1. A file descriptor 
 *	RETURN VALUES
