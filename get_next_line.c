@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/09 22:45:31 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/09 22:56:42 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ char	*get_next_line(int fd)
 		if (n < 0)
 			return (NULL);
 	}
-	if (ft_strchr(buff_read, '\n') || (buff_len && !n))
-		buff_read = get_line(&buff_read, &buff_len, &line);
-	if (!buff_len && !n)
+	if (!buff_len && n == 0)
 	{
 		free(buff_read);
 		return (NULL);
 	}
+	if (ft_strchr(buff_read, '\n') || n == 0)
+		buff_read = get_line(&buff_read, &buff_len, &line);
 	return (line);
 }
 
