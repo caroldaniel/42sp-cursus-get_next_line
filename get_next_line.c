@@ -6,13 +6,53 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 17:44:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 17:47:15 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 18:26:34 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line);
 char	*get_line(char **buff_read, char **line);
+
+/* 
+*	GET_NEXT_LINE
+*	-------------
+*	DESCRIPTION
+*	This function takes an opened file descriptor and returns its next line.
+*	PARAMETERS
+*	#1. A file descriptor 
+*	RETURN VALUES
+*	If successful, get_next_line returns a string with the full line ending in
+*	a line break (`\n`) when there is one. 
+*	If an error occurs, or there's nothing more to read, it returns NULL.
+*	----------------------------------------------------------------------------
+*	AUXILIARY FUNCTIONS
+*	-------------------
+*	READ_FILE
+*	---------
+*	Checks if there's a line break in the buffer from the static variable 
+*	`buff_read` from previous runs of get_next_line. If yes, sends the buffer to 
+*	the get_line function. If not, reads file in loop until it reaches the next
+*	line break `\n` or the end of the file.
+*	PARAMETERS
+*	#1. A file descriptor
+*	#2. The buffer to be passed to the `read` function
+*	#3. The cumulative static buffer from previous runs of get_next_line
+*	#4. The pointer to the line to be extracted from buffer
+*	RETURN VALUES
+*	The number of bytes read during the function call, or 0 if EOF.
+*	---------
+*	GET_LINE
+*	---------
+*	Extracts the line (ending in either line break and `\0` or only `\0` in EOF)
+*	from static buffer.
+*	PARAMETERS
+*	#1. The cumulative static buffer from previous runs of get_next_line
+*	#4. The pointer to the line to be extracted from buffer
+*	RETURN VALUES
+*	The new updated buffer with whatever is left from the original, minus the
+*	line extracted.
+*/
 
 char	*get_next_line(int fd)
 {
