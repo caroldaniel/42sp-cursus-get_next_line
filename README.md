@@ -43,7 +43,7 @@ The project
 - [`get_next_line`](get_next_line.c)	- the main function and its additionals
 - [`get_next_line_utils`](get_next_line_utils.c)	- additional functions from [`libft`](https://github.com/caroldaniel/42sp-cursus-libft)
 
-### Mandatory implementation
+### Bonus implementation
 
 - [`header file`](get_next_line_bonus.h)
 - [`get_next_line_bonus`](get_next_line_bonus.c)	- the main function and its additionals
