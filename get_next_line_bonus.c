@@ -6,11 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:50:19 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/10 20:06:02 by cado-car         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 22:07:25 by cado-car         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 ssize_t	read_file(int fd, char **buffer, char **buff_read, char **line);
 char	*get_line(char **buff_read, char **line);
 
@@ -24,7 +24,7 @@ char	*get_line(char **buff_read, char **line);
 *	#1. A file descriptor 
 *	RETURN VALUES
 *	If successful, get_next_line returns a string with the full line ending in
-*	a line break (`\n`) when there is one. 
+*	a line break (`\n`) when there is one.
 *	If an error occurs, or there's nothing more to read, it returns NULL.
 *	----------------------------------------------------------------------------
 *	AUXILIARY FUNCTIONS
@@ -55,8 +55,6 @@ char	*get_line(char **buff_read, char **line);
 *	The new updated buffer with whatever is left from the original, minus the
 *	line extracted.
 */
-
-#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
