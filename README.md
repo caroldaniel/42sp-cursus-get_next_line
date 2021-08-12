@@ -7,7 +7,7 @@
 </h2>
 
 <p align=center>
-	In this repo you will find all the files regarding the implementations of the `get_next_line` functions, both its <b>mandatory</b> and <b>bonus</b> versions. 
+	In this repo you will find all the files regarding the implementations of the <b>get_next_line</b> functions, both its <b>mandatory</b> and <b>bonus</b> versions. 
 
 ---
 <div align=center>
